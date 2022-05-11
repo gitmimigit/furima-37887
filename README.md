@@ -11,30 +11,27 @@
 | last_name          | string | null: false               |
 | first_kana         | string | null: false               |
 | last_kana          | string | null: false               |
-| birth_year_id      | integer| null: false               |
-| birth_month_id     | integer| null: false               |
-| birth_day_id       | integer| null: false               |
+| birthday_id        | date   | null: false               |
+
 
 ### Association
 
 - has_many :items
 - has_many :orders
-- belongs_to :birth_year
-- belongs_to :birth_month
-- belongs_to :birth_day
+- belongs_to :birthday
+
 
 ##  items
 
 | Column         | Type       | Options                        |
 | -------------- | ---------- | ------------------------------ |
-| image          | string     | null: false                    |
 | item_name      | string     | null: false                    |
 | describe       | text       | null: false                    |
 | category_id    | integer    | null: false                    |
 | status_id      | integer    | null: false                    |
 | fee_id         | integer    | null: false                    |
 | source-id      | integer    | null: false                    |
-| days-id        | integer    | null: false                    |
+| duration_id    | integer    | null: false                    |
 | price          | integer    | null: false                    |
 | user           | references | null: false, foreign_key: true |
 
@@ -42,7 +39,7 @@
 
 - belongs_to :user
 - has_one :order
-- has_one :delivery
+- belongs_to :source
 
 ##  orders
 
@@ -63,17 +60,15 @@
 
 | Column             | Type       | Options                        |
 | ------------------ | ---------- | ------------------------------ |
-| postal_code        | integer    | null: false                    |
-| prefecture_id      | integer    | null: false                    |
+| postal_code        | string     | null: false                    |
+| source_id          | integer    | null: false                    |
 | city               | string     | null: false                    |
 | address_line1      | string     | null: false                    |
-| address_kine2      | string     | null: false                    |
+| address_line2      | string     |                                |
 | number             | integer    | null: false                    |
 | order              | references | null: false, foreign_key: true |
-| item               | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :item
 - belongs_to :order
-- belongs_to :prefecture
+- belongs_to :source
