@@ -18,7 +18,6 @@
 
 - has_many :items
 - has_many :orders
-- belongs_to :birthday
 
 
 ##  items
@@ -30,7 +29,7 @@
 | category_id    | integer    | null: false                    |
 | status_id      | integer    | null: false                    |
 | fee_id         | integer    | null: false                    |
-| source-id      | integer    | null: false                    |
+| source_id      | integer    | null: false                    |
 | duration_id    | integer    | null: false                    |
 | price          | integer    | null: false                    |
 | user           | references | null: false, foreign_key: true |
@@ -39,7 +38,6 @@
 
 - belongs_to :user
 - has_one :order
-- belongs_to :source
 
 ##  orders
 
@@ -47,7 +45,6 @@
 | -------------- | --------- | ----------------------------------------- |
 | item           | references| null: false, foreign_key: true            |
 | user           | references| null: false, foreign_key: true            |
-|                |           |                                           |
 
 
 ### Association
@@ -71,4 +68,3 @@
 ### Association
 
 - belongs_to :order
-- belongs_to :source
