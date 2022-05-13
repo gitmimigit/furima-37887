@@ -2,12 +2,16 @@ class Item < ApplicationRecord
   validates :image, presence: true
   validates :item_name, presence: true
   validates :describe, presence: true
-  validates :category_id, presence: true
-  validates :status_id, presence: true
-  validates :fee_id, presence: true
-  validates :source_id, presence: true
-  validates :duration_id, presence: true
+  validates :category_id, numericality: { other_than: 1 , message: "can't be blank" }
+  validates :status_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :fee_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :source_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :duration_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :price, presence: true
+
+  with_options format: { with: /300-9999999/, message: 'is out of setting range' } do
+    validates :price
+  end
 
   belongs_to :user
 
