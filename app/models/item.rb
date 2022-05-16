@@ -7,9 +7,9 @@ class Item < ApplicationRecord
   validates :fee_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :source_id, numericality: { other_than: 1 , message: "can't be blank"}
   validates :duration_id, numericality: { other_than: 1 , message: "can't be blank"}
-  validates :price, presence: true
-
-  with_options format: { with: /300-9999999/, message: 'is out of setting range' } do
+  validates :price, presence: true, numericality: { message: "is invalid. Input half-width characters"}
+  
+  with_options format: { with: /[3-9][0-9][0-9]|[0-9]{4,7}/, message: 'is out of setting range' } do
     validates :price
   end
 
