@@ -1,6 +1,7 @@
 class OrderDelivery
   include ActiveModel::Model
   attr_accessor :item_id, :user_id, :postal_code, :source_id, :city, :address_line1, :address_line2, :number
+  attr_accessor :token
   
   with_options presence: true do
     validates :item_id
@@ -9,9 +10,10 @@ class OrderDelivery
     validates :source_id, numericality: {other_than: 1, message: "can't be blank"}
     validates :city
     validates :address_line1
-    validates :number, numericality: { only_integer: true, message: 'is invalid. Input only number'}  
+    validates :number, numericality: { only_integer: true, message: 'is invalid. Input only number'}
+    validates :token  
   end
-  
+
   validates :number, format: { with: /\A\d{10,11}\z/, message: 'is too short' } 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)
