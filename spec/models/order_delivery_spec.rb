@@ -76,7 +76,17 @@ RSpec.describe OrderDelivery, type: :model do
       it "tokenが空では購入できない" do
         @order_delivery.token = nil
         @order_delivery.valid?
-        expect(@order_delivery.errors.full_messages).to include("Token can't be blank")
+        expect(@order_delivery.errors.full_messages).to include "Token can't be blank"
+      end
+      it 'userが紐付いてなければ購入できない' do
+        @order_delivery.user_id = nil
+        @order_delivery.valid?
+        expect(@order_delivery.errors.full_messages).to include "User can't be blank"
+      end
+      it 'itemが紐付いてなければ購入できない' do
+        @order_delivery.item_id = nil
+        @order_delivery.valid?
+        expect(@order_delivery.errors.full_messages).to include "Item can't be blank"
       end
     end
   end
