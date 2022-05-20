@@ -7,7 +7,5 @@ FactoryBot.define do
     address_line2   {Faker::Address.secondary_address}
     number          {Faker::Number.leading_zero_number(digits: 10)}
   
-    association :user
-    association :item 
   end
 end
