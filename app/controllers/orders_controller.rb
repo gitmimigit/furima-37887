@@ -21,7 +21,6 @@ class OrdersController < ApplicationController
 
   private
   def order_params
-    @item = Item.find(params[:item_id])
     params.require(:order_delivery).permit(:postal_code, :source_id, :city, :address_line1, :address_line2, :number).merge(user_id: current_user.id, item_id: @item.id, token: params[:token])
   end
 
