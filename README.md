@@ -62,7 +62,7 @@
 | city               | string     | null: false                    |
 | address_line1      | string     | null: false                    |
 | address_line2      | string     |                                |
-| number             | integer    | null: false                    |
+| number             | string     | null: false                    |
 | order              | references | null: false, foreign_key: true |
 
 ### Association
